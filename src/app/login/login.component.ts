@@ -26,26 +26,26 @@ export class LoginComponent implements OnInit {
       return;
     }
   
-    this._adminService.login(forma.value.correo, forma.value.password)
-      .subscribe(correcto =>
-          {
-            localStorage.setItem('tokenAPV', correcto.token);
-            localStorage.setItem('adminPV', JSON.stringify(correcto.admin));
+    // this._adminService.login(forma.value.correo, forma.value.password)
+    //   .subscribe(correcto =>
+    //       {
+    //         localStorage.setItem('tokenAPV', correcto.token);
+    //         localStorage.setItem('adminPV', JSON.stringify(correcto.admin));
             this.router.navigate(['/empresa']);
-          },
-          error => {
-            Swal.fire({
-              icon: 'error',
-              text: error.error.message,
-              showClass: {
-                popup: 'animated fadeInDown faster'
-              },
-              hideClass: {
-                popup: 'animated fadeOutUp faster'
-              }
-            });
-          }
-      )
+      //     },
+      //     error => {
+      //       Swal.fire({
+      //         icon: 'error',
+      //         text: error.error.message,
+      //         showClass: {
+      //           popup: 'animated fadeInDown faster'
+      //         },
+      //         hideClass: {
+      //           popup: 'animated fadeOutUp faster'
+      //         }
+      //       });
+      //     }
+      // )
   }
 
 }
