@@ -15976,7 +15976,7 @@ textarea[resize=horizontal] {
 }
 
 .icon-lg+.icon-text {
-    width: calc(100% - $icon-size-lg - 1)
+    width: calc(100% - icon-size-lg - 1)
 }
 
 .icon-sm {
@@ -15990,7 +15990,7 @@ textarea[resize=horizontal] {
 }
 
 .icon-sm+.icon-text {
-    width: calc(100% - $icon-size-sm - 1)
+    width: calc(100% - icon-size-sm - 1)
 }
 
 .icon-xs {
@@ -16004,7 +16004,7 @@ textarea[resize=horizontal] {
 }
 
 .icon-xs+.icon-text {
-    width: calc(100% - $icon-size-xs - 1)
+    width: calc(100% - icon-size-xs - 1)
 }
 
 .icon-actions>a {
