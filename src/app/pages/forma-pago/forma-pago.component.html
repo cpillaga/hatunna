@@ -1,0 +1,149 @@
+<div class="header bg-primary pb-6" style="background-color: #B0252A !important;">
+    <div class="container-fluid" style="background-color: #B0252A;">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Formas de Pago</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <form #buscar="ngForm" (keyup)="searchFormaPago(buscar)">
+                        <input type="text" class="form-control" value="{{ buscarForma }}" [ngModel]="buscarForma" id="buscarForma" name="buscarForma" placeholder="Buscar...">
+                    </form>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="sort" data-sort="name" (click)="ordenarForma()">Descripción</th>
+                                <th scope="col" class="text-right">Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <p *ngIf="coincidencia == false">No se encontró ninguna coincidencia</p>
+
+                        <tbody class="list" *ngIf="coincidencia == true">
+                            <tr *ngFor="let forma of formaPago; let i = index;">
+                                <th>
+                                    <span class="text-muted">{{ forma.forma_descripcion }}</span>
+                                </th>
+
+                                <th class="text-right">
+                                    <button class="btn btn-primary btn-sm" (click)="getDataForma(i)" data-toggle="modal" data-target="#ModalUpdForma"> Modificar </button>
+                                </th>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Card footer -->
+                <!-- <div class="card-footer py-4">
+                    <nav aria-label="...">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">
+                                    <i class="fas fa-angle-left"></i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="fas fa-angle-right"></i>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<caption>
+    <a class="btn  btn-round1 btn-fab1" data-toggle="modal" data-target="#ModalAddForma">
+        <i class="fas fa-plus text-white"></i>
+    </a>
+</caption>
+
+<div class="modal fade" id="ModalAddForma" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-default">Agregar Forma Pago</h6>
+                <button type="button" #closebuttonadd class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="form-horizontal" #addForma="ngForm" (ngSubmit)="addFormaPago(addForma);" autocomplete="off">
+                <div class="modal-body ">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-3 col-form-label form-control-label">Descripción</label>
+                        <div class="col-md-9">
+                            <input class="form-control" type="text" id="descripcion" name="descripcion" [ngModel]="descripcion">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-fill btn-danger" id="addFormaPago" name="addFormaPago">
+                        Agregar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" *ngIf="getData" id="ModalUpdForma" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-default">Modificar Forma Pago</h6>
+                <button type="button" #closebuttonupd class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="form-horizontal" #updForma="ngForm" (ngSubmit)="updFormaPago(updForma);" autocomplete="off">
+                <div class="modal-body ">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-3 col-form-label form-control-label">Id</label>
+                        <div class="col-md-9">
+                            <input class="form-control" type="text" id="id" name="id" [ngModel]="formaSelect.forma_id">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-3 col-form-label form-control-label">Descripción</label>
+                        <div class="col-md-9">
+                            <input class="form-control" type="text" id="descripcion" name="descripcion" [ngModel]="formaSelect.forma_descripcion">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-fill btn-danger" id="updFormaPago" name="updFormaPago">
+                        Modificar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
