@@ -71,22 +71,39 @@ export class ProductoComponent implements OnInit {
   }
 
   addProducto(prod: NgForm){
-    this._catService.subirImg(this.imgTemp).then(url => {
-      const producto = {
-        nombre: prod.value.nombre,
-        precioUni: prod.value.precioUni,
-        unidadMedida: prod.value.unidadMedida,
-        img: url,
-        subcategoria: prod.value.subcategoria,
-        stock: prod.value.stock,
-        proveedor: prod.value.proveedor
-      };
+    if(prod.valid){
+      let existe = false;
+      for (let i = 0; i < this.productos.length; i++) {
+        if(this.productos[i].nombre === prod.value.nombre){
+          existe = true;
+        }
+      }
 
-      this._prodService.addProducto(producto).subscribe(resp => {
-        this.getProducto();
-        this.closebuttonadd.nativeElement.click();
-      })
-    })
+      if (!existe) {
+        this._catService.subirImg(this.imgTemp).then(url => {
+          const producto = {
+            nombre: prod.value.nombre,
+            precioUni: prod.value.precioUni,
+            unidadMedida: prod.value.unidadMedida,
+            img: url,
+            subcategoria: prod.value.subcategoria,
+            stock: prod.value.stock,
+            proveedor: prod.value.proveedor
+          };
+    
+          this._prodService.addProducto(producto).subscribe(resp => {
+            this.getProducto();
+            this.closebuttonadd.nativeElement.click();
+          });
+        });
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Este producto ya existe'
+        });
+      }
+    }
   }
 
   selectImage(file: File){

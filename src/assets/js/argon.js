@@ -94,7 +94,7 @@ var Layout = (function() {
                 break;
 
             case 'sidenav-unpin':
-                unpinSidenav();
+                // unpinSidenav();
                 break;
 
             case 'search-show':

@@ -47,7 +47,6 @@ export class CategoriaComponent implements OnInit {
     this.getCategorias();
   }
 
-  
   selectImage(file: File){
     this.selectImg = file;
     this.nomImg = file.name;
@@ -72,7 +71,6 @@ export class CategoriaComponent implements OnInit {
     });
   }
 
-
   addCategoria(cat: NgForm){
     if (cat.valid) {
 
@@ -93,8 +91,6 @@ export class CategoriaComponent implements OnInit {
           return;
         });
         })
-        
-
     }else{
       Swal.fire({
         icon: 'error',
@@ -104,4 +100,20 @@ export class CategoriaComponent implements OnInit {
     }
   }
 
+  // searchCat(termino){
+  //   if (termino == "") {
+  //     this.coincidencia = true;
+  //     this.getEnvios();
+  //   }else{
+  //     this._enviosService.searchEnvio(termino, this.idSucursal).subscribe(resp => {
+  //       if (resp.length === 0) {
+  //         this.coincidencia = false;  
+  //       }else{
+  //         console.log(resp);
+  //         this.envios = resp;
+  //         this.coincidencia = true;
+  //       }
+  //     });
+  //   }
+  // }
 }
