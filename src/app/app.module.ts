@@ -12,11 +12,10 @@ import { AdminService } from './services/admin.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EmpresaService } from './services/empresa.service';
-import { EmpleadoService } from './services/empleado.service';
-import { ClienteService } from './services/cliente.service';
-import { PresentacionService } from './services/presentacion.service';
-import { FormaPagoService } from './services/forma-pago.service';
+import { CategoriaService } from './services/categoria.service';
+import { ProductoService } from './services/producto.service';
+import { SubcategoriaService } from './services/subcategoria.service';
+import { ProveedorService } from './services/proveedor.service';
 
 @NgModule({
   declarations: [
@@ -36,11 +35,10 @@ import { FormaPagoService } from './services/forma-pago.service';
   ],
   providers: [
     AdminService,
-    EmpresaService,
-    EmpleadoService,
-    ClienteService,
-    PresentacionService,
-    FormaPagoService
+    CategoriaService,
+    SubcategoriaService,
+    ProveedorService,
+    ProductoService
   ],
   bootstrap: [AppComponent]
 })

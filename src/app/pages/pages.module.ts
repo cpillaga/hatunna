@@ -7,19 +7,20 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
-import { EmpresaComponent } from './empresa/empresa.component';
-import { PresentacionComponent } from './presentacion/presentacion.component';
-import { FormaPagoComponent } from './forma-pago/forma-pago.component';
-
+import { ProductoComponent } from './producto/producto.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { SubcategoriaComponent } from './subcategoria/subcategoria.component';
+import { ProveedorComponent } from './proveedor/proveedor.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     PagesComponent,
-    EmpresaComponent,
-    PresentacionComponent,
-    FormaPagoComponent
+    ProductoComponent,
+    CategoriaComponent,
+    SubcategoriaComponent,
+    ProveedorComponent,
   ],
   exports: [
       PagesComponent,

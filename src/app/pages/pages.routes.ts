@@ -1,9 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { HomeComponent } from './home/home.component';
-import { EmpresaComponent } from './empresa/empresa.component';
-import { PresentacionComponent } from './presentacion/presentacion.component';
-import { FormaPagoComponent } from './forma-pago/forma-pago.component';
+import { ProductoComponent } from './producto/producto.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { SubcategoriaComponent } from './subcategoria/subcategoria.component';
+import { ProveedorComponent } from './proveedor/proveedor.component';
 
 const pagesRoutes: Routes = [
     {
@@ -11,9 +12,10 @@ const pagesRoutes: Routes = [
         component: PagesComponent,
         children: [
             // { path: 'inicio', component: HomeComponent },
-            { path: 'empresa', component: EmpresaComponent },
-            { path: 'presentacion', component: PresentacionComponent },
-            { path: 'formaPago', component: FormaPagoComponent },
+            { path: 'productos', component: ProductoComponent },
+            { path: 'categoria', component: CategoriaComponent },
+            { path: 'subcategoria', component: SubcategoriaComponent },
+            { path: 'proveedor', component: ProveedorComponent },
             { path: '', redirectTo: '/login', pathMatch: 'full' }
         ]
     }

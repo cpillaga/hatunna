@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(){
-    localStorage.removeItem('tokenAPV');
+    localStorage.removeItem('tokenHat');
     localStorage.removeItem('adminPV');
     
     this.router.navigate(['/login'])

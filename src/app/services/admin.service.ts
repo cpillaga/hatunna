@@ -20,7 +20,7 @@ export class AdminService {
         'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    const url = URL_SERVICE.url + '/admin/login';
+    const url = URL_SERVICE.url + '/login';
 
     const body = {
         correo,
